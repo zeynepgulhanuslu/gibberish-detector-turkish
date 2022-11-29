@@ -5,7 +5,7 @@ from unittest import mock
 
 import pytest
 
-from gibberish_detector.main import main
+from gibberish_detector_tr.main import main
 
 
 @pytest.mark.parametrize(
@@ -61,7 +61,7 @@ def test_train_multiple_models():
 
 def test_interactive(basic_model_filename):
     # This is a smoke test.
-    with mock.patch('gibberish_detector.main.input', side_effect=['blah', EOFError]):
+    with mock.patch('gibberish_detector_tr.main.input', side_effect=['blah', EOFError]):
         assert main(['detect', '-m', basic_model_filename, '-i']) == 0
 
 

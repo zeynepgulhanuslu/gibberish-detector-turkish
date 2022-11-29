@@ -1,7 +1,7 @@
 import string
 import tempfile
 
-from gibberish_detector.trainer import train
+from gibberish_detector_tr.trainer import train
 
 
 def test_basic():

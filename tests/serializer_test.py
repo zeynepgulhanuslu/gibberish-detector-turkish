@@ -1,8 +1,8 @@
 import pytest
 
-from gibberish_detector import serializer
-from gibberish_detector.exceptions import ParsingError
-from gibberish_detector.model import Model
+from gibberish_detector_tr import serializer
+from gibberish_detector_tr.exceptions import ParsingError
+from gibberish_detector_tr.model import Model
 
 
 @pytest.mark.parametrize(

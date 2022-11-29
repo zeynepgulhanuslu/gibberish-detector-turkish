@@ -1,6 +1,6 @@
 import pytest
 
-from gibberish_detector.usage import parse_args
+from gibberish_detector_tr.usage import parse_args
 
 
 def test_invalid_file():

@@ -1,5 +1,5 @@
 #!/bin/bash
-PACKAGE_NAME='gibberish-detector'
+PACKAGE_NAME='gibberish-detector-tr'
 
 function usage() {
     echo "Usage: upload-to-pypi [test|main]"

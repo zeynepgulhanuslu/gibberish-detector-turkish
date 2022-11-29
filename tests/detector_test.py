@@ -2,8 +2,8 @@ import string
 
 import pytest
 
-from gibberish_detector import trainer
-from gibberish_detector.detector import Detector
+from gibberish_detector_tr import trainer
+from gibberish_detector_tr.detector import Detector
 
 
 def test_calculate_probability_of_being_gibberish(model):

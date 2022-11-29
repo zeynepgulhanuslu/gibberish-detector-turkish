@@ -1,32 +1,30 @@
-[![PyPI version](https://badge.fury.io/py/gibberish-detector.svg)](https://badge.fury.io/py/gibberish-detector)
 
 # Gibberish Detector
 
-This is based off https://github.com/rrenaud/Gibberish-Detector, and adapted so that it is a
-Python3 module.
+This is based off https://github.com/domanchi/gibberish-detector, and add support for Turkish characters.
 
 ## Examples
 
 **Quickstart**:
 
 ```bash
-$ gibberish-detector train examples/big.txt > big.model
-$ gibberish-detector detect --model big.model --string "ertrjiloifdfyyoiu"
+$ gibberish-detector-tr train examples/big.txt tr-big.model
+$ gibberish-detector-tr detect --model tr-big.model --string "ertrjiloifdfyyoiu"
 True
 ```
 
 **Training Large Corpuses**:
 
 ```bash
-$ gibberish-detector train $(ls examples/*) > generic.model
+$ gibberish-detector-tr train $(ls examples/*) generic.model
 ```
 
 **Interactive Detection**:
 
 ```bash
-$ gibberish-detector detect --model big.model --interactive
+$ gibberish-detector-tr detect --model tr-big.model --interactive
 Entering interactive mode. Press ctrl+d to quit.
-Input text: superman
+Input text: "düzgün bir cümle"
 False (2.375)
 Input text: ertrjiloifdfyyoiu
 True  (4.154)
@@ -35,14 +33,16 @@ True  (4.154)
 ## Installation
 
 ```
-pip install gibberish-detector
+git clone https://github.com/zeynepgulhanuslu/gibberish-detector-turkish.git
+cd gibberish-detector-turkish 
+python setup.py install
 ```
 
 ## Usage
 
 ```
-$ gibberish-detector -h
-usage: gibberish-detector [-h] [--version] {train,detect} ...
+$ gibberish-detector-tr -h
+usage: gibberish-detector-tr [-h] [--version] {train,detect} ...
 
 positional arguments:
   {train,detect}
@@ -57,7 +57,7 @@ optional arguments:
 You can also use this as an imported module:
 
 ```python
->>> from gibberish_detector import detector
+>>> from gibberish_detector_tr import detector
 >>> Detector = detector.create_from_model('big.model')
 >>> print(Detector.is_gibberish('ertrjiloifdfyyoiu'))
 True

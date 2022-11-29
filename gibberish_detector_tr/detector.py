@@ -8,7 +8,7 @@ def create_from_model(filename: str, limit: float = 4.0):
     :raises: IOError
     :raises: ParsingError
     """
-    with open(filename) as f:
+    with open(filename, 'r', encoding='utf-8') as f:
         model = serializer.deserialize(f.read())
 
     return Detector(model, limit)

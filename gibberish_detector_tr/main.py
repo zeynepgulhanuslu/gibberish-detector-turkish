@@ -20,31 +20,36 @@ def main(argv: Optional[List[str]] = None) -> int:
 
 def _handle_train_action(args: argparse.Namespace) -> int:
     model = None
-    for filename in args.filename:      # pragma: no cover
+    for filename in args.corpus:  # pragma: no cover
         if not model:
             model = trainer.train(filename)
         else:
             model.update(trainer.train(filename))
 
-    if not model:       # pragma: no cover
+    if not model:  # pragma: no cover
         # This should never happen, since we setup argparse to require filenames.
         # However, this conditional keeps mypy happy.
         return 1
 
-    print(serializer.serialize(model))
+    model_json = serializer.serialize(model)
+
+    out_str = args.model[0]
+
+    with open(out_str, "w", encoding='utf-8') as f:
+        f.write(model_json)
     return 0
 
 
 def _handle_detect_action(args: argparse.Namespace) -> int:
     try:
         Detector = detector.create_from_model(args.model, args.limit)
-    except IOError:     # pragma: no cover
+    except IOError:  # pragma: no cover
         print(
             'error: There was an issue opening your model.',
             file=sys.stderr,
         )
         return 1
-    except ParsingError:        # pragma: no cover
+    except ParsingError:  # pragma: no cover
         print(
             'error: There was an issue parsing your model. Try re-creating it.',
             file=sys.stderr,

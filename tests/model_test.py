@@ -2,7 +2,7 @@ import string
 
 import pytest
 
-from gibberish_detector.model import Model
+from gibberish_detector_tr.model import Model
 
 
 class TestUpdate:

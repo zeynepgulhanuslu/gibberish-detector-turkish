@@ -13,7 +13,7 @@ from .model import Model
 
 def serialize(model: Model) -> str:
     data = model.json()
-    return json.dumps(data)
+    return json.dumps(data, ensure_ascii=False, indent=2)
 
 
 def deserialize(payload: str) -> Model:
